@@ -9,7 +9,7 @@ services:
     volumes:
     - rasa_models:/app/models
     - "./rasa-app-data/:/app/"
-    command: train --augmentation 0 && rasa run --enable-api --debug
+    command: "rasa train && rasa run --enable-api --debug"
 #       - /bin/bash
 #       - -c
 #       - |
