@@ -8,12 +8,12 @@ FROM rasa/rasa:latest-full
 WORKDIR /app
 
 # Copy actions requirements
-COPY actions/requirements-actions.txt ./
+#COPY actions/requirements-actions.txt ./
 
 # Change to root user to install dependencies
 USER root
 
-RUN apt-get update -qq && \
+#RUN apt-get update -qq && \
   apt-get install -y --no-install-recommends \
   python3 \
   python3-venv \
@@ -26,22 +26,22 @@ RUN apt-get update -qq && \
   && apt-get autoremove -y
 
 # Make sure that all security updates are installed
-RUN apt-get update && apt-get dist-upgrade -y --no-install-recommends
+#RUN apt-get update && apt-get dist-upgrade -y --no-install-recommends
 
 # Install extra requirements for actions code
-RUN pip install -r requirements-actions.txt
+#RUN pip install -r requirements-actions.txt
 
 # Copy actions code to working directory
-COPY ./actions /app/actions
+#COPY ./actions /app/actions
 
 # Install modules from setup.py
-COPY setup.py /app
-COPY README.md /app
-RUN pip install . --no-cache-dir
+#COPY setup.py /app
+#COPY README.md /app
+#RUN pip install . --no-cache-dir
 
 # Download spacy language data
-RUN python -m spacy download en_core_web_md
-RUN python -m spacy link en_core_web_md en
+#RUN python -m spacy download en_core_web_md
+#RUN python -m spacy link en_core_web_md en
 
 
 RUN echo 'if not [ -d "/app/models" ]; then \
