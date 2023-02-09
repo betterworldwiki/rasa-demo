@@ -13,6 +13,7 @@ services:
     - rasa_models:/app/models
     - "./rasa-app-data/:/app/"
     command:  
+      - rasa
       - train
       - --augmentation
       - 0
