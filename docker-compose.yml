@@ -3,7 +3,7 @@ version: '3.0'
 services:
   rasa:
     image: rasa/rasa:latest-full
-    networks: ['rasa-network']
+#    networks: ['rasa-network']
     ports:
     - "5005:5005"
     volumes:
@@ -24,7 +24,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    networks: ['rasa-network']
+#    networks: ['rasa-network']
     ports:
     - "5055:5055"
     volumes:
@@ -32,14 +32,14 @@ services:
 
   duckling:
     image: rasa/duckling:latest
-    networks: ['rasa-network']
+#    networks: ['rasa-network']
     ports:
     - "8000:8000"
     
   rasa_ui:       
     image: paschmann/rasa-ui:latest
     container_name: rasa_ui
-    networks: ['rasa-network']
+ #   networks: ['rasa-network']
     ports:
       - "8080:8080"
     depends_on:
