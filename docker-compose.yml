@@ -12,6 +12,7 @@ services:
   command: >
     train 
     --augmentation 0
+#  command: >
 #    &&
 #    run
 #    --debug 
