@@ -11,17 +11,15 @@ services:
     - "./rasa-app-data/:/app/"
     command:  
       - train
+      - &&
+      - rasa
+      - run  
       - -m  
-      - models
+      - models   
+      - --enable-api  
+      - --cors   
+      - "*"  
       - --debug   
-#     command:  
-#       - run  
-#       - -m  
-#       - models   
-#       - --enable-api  
-#       - --cors   
-#       - "*"  
-#       - --debug   
 #  command: >
 #    &&
 #    run
