@@ -7,9 +7,18 @@ services:
     ports:
     - "5005:5005"
     volumes:
+    - rasa_models:/app/models
     - "./rasa-app-data/:/app/"
-    command: "run --enable-api --debug"
-
+    command:       
+      - /bin/bash
+      - -c
+      - |
+        if not [ -d "/app/models" ]; then
+          echo "Installing and training model files in /app/models..."
+          rasa train --augmentation 0
+          echo "Model Training successful! (/app/models)"
+        fi
+        rasa run --enable-api --debug
   action_server:
 #    image: rasa/rasa-sdk:latest
     build: 
@@ -37,3 +46,5 @@ services:
       - "rasa"
     environment:
       rasa_endpoint: "http://rasa:5005"
+volumes:
+  rasa_models:
