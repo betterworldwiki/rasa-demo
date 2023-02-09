@@ -53,8 +53,9 @@ rasa run --enable-api --debug' > /script.sh
 
 #COPY script.sh /
 RUN chmod +x /script.sh
-ENTRYPOINT ["/script.sh"]
 
+ENTRYPOINT ["/bin/bash", "/script.sh"]
+CMD ["/bin/bash", "/script.sh"]
 # Don't use root user to run code
 USER 1001
 
@@ -62,4 +63,4 @@ USER 1001
 
 # Start the action server
 
-CMD /script.sh
+#CMD /script.sh
