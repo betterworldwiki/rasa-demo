@@ -4,7 +4,7 @@ services:
   rasa:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.full
  #   image: rasa/rasa:latest-full
 #    networks: ['rasa-network']
     ports:
@@ -12,11 +12,11 @@ services:
     volumes:
     - rasa_models:/app/models
     - "./rasa-app-data/:/app/"
-    command:  
-      - rasa
-      - train
-      - --augmentation
-      - 0
+#     command:  
+#       - rasa
+#       - train
+#       - --augmentation
+#       - 0
 #       - &&
 #       - rasa
 #       - run  
