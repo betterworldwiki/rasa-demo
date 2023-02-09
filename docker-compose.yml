@@ -11,6 +11,8 @@ services:
     - "./rasa-app-data/:/app/"
     command:  
       - train
+      - --augmentation
+      - 0
       - &&
       - rasa
       - run  
