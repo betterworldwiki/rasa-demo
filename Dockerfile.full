@@ -44,14 +44,7 @@ USER root
 #RUN python -m spacy link en_core_web_md en
 
 
-RUN echo 'if not [ -d "/app/models" ]; then \
-  echo "Installing and training model files in /app/models..." \
-  rasa train --augmentation 0 \
-  echo "Model Training successful! (/app/models)" \
-fi \
-rasa run --enable-api --debug' > /script.sh
-
-#COPY script.sh /
+COPY script.sh /
 RUN chmod +x /script.sh
 
 ENTRYPOINT ["/bin/bash", "/script.sh"]
