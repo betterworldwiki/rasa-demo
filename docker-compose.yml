@@ -2,7 +2,10 @@ version: '3.0'
 
 services:
   rasa:
-    image: rasa/rasa:latest-full
+    build: 
+      context: .
+      dockerfile: Dockerfile
+ #   image: rasa/rasa:latest-full
 #    networks: ['rasa-network']
     ports:
     - "5005:5005"
